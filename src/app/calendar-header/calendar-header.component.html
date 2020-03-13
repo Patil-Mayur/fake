@@ -1,0 +1,9 @@
+<div class="calendar-header">
+    <button nz-button nzType="default">Today</button>
+    <nz-select [ngModel]="calendarRendererType" (ngModelChange)="onRenderTypeChange($event)" >
+        <nz-option nzValue="month" nzLabel="Month"></nz-option>
+        <nz-option nzValue="week" nzLabel="Week"></nz-option>
+        <nz-option nzValue="day" nzLabel="Day"></nz-option>
+    </nz-select>
+    <label>February 2020</label>
+</div>
