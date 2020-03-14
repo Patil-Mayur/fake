@@ -30,15 +30,31 @@ export class CalendarService {
     }
 
     getTodaysDate() {
-        return this.todaysDate;
+        return this.todaysDate.clone();
     }
 
-    setCurrentDate(date) {
-        this.currentDate.next(date);
+    setCurrentDate(date?:moment.Moment) {
+        this.currentDate.next(date || this.getTodaysDate());
     }
 
     getCurrentDate():BehaviorSubject<moment.Moment> {
         return this.currentDate;
+    }
+
+    addMonth(months:number=1) {
+        this.setCurrentDate(this.currentDate.getValue().add(months, 'months'));
+    }
+
+    subtractMonth(months:number=1) {
+        this.setCurrentDate(this.currentDate.getValue().subtract(months, 'months'));
+    }
+
+    getYearShort(date?:moment.Moment) {
+        return (date || this.currentDate.getValue()).format('YY');
+    }
+
+    getYear(date?:moment.Moment) {
+        return (date || this.currentDate.getValue()).format('YYYY');
     }
 
     getMonthShort(date?:moment.Moment) {
