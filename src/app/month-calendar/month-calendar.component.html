@@ -1,10 +1,12 @@
-<div class="month-header">
-    <div class="col-header" *ngFor="let day of daysOfWeek" style="border-top:1px solid #dadce0;border-right:1px solid #dadce0">
-        <span class="week-day-label">{{day}}</span>
+<div class="month-body">
+    <div class="month-header">
+        <div class="col-header" *ngFor="let day of daysOfWeek" style="border-top:1px solid #dadce0;border-right:1px solid #dadce0">
+            <span class="week-day-label">{{day}}</span>
+        </div>
     </div>
-</div>
-<div class="month-container">
-    <div class="col-header" *ngFor="let d of monthDates" style="width: 50px;height:50px;border-bottom:1px solid #dadce0;border-right:1px solid #dadce0">
-        {{d._d}}
+    <div class="month-container">
+        <div class="col-item" *ngFor="let monthDate of monthDates"  style="border-bottom:1px solid #dadce0;border-right:1px solid #dadce0">
+            <month-item-calendar [monthDate]="monthDate"></month-item-calendar>
+        </div>
     </div>
 </div>

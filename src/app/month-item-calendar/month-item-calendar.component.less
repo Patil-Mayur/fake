@@ -1,0 +1,21 @@
+@import "../../app/variables.less";
+
+.month-item-container {
+    display: flex;
+    width:@per-100;
+    padding-top:2px;
+    justify-content: center;
+    .display-date-common {
+        font-size: @calendar-body-font-default;
+    }
+    .current-item-date {
+        color: @date-display-color;
+    }
+    .item-todays-date {
+        background-color: @hightlight-header-date-bg-color;
+        color: @hightlight-header-date-color;
+    }
+    .item-non-current-date {
+        color: @not-current-date-color;
+    }
+}

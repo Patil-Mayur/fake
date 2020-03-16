@@ -13,6 +13,7 @@ import { MonthCalendarComponent } from './month-calendar/month-calendar.componen
 import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
 import { DayCalendarComponent } from './day-calendar/day-calendar.component';
 import { CalendarBodyComponent } from './calendar-body/calendar-body.component';
+import { MonthItemCalendarComponent } from './month-item-calendar/month-item-calendar.component';
 
 
 const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
@@ -24,7 +25,8 @@ const icons: IconDefinition[] = [ LeftOutline, RightOutline ];
     MonthCalendarComponent,
     WeekCalendarComponent,
     DayCalendarComponent,
-    CalendarBodyComponent
+    CalendarBodyComponent,
+    MonthItemCalendarComponent
   ],
   imports: [
     BrowserModule,
