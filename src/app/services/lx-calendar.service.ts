@@ -77,4 +77,7 @@ export class LXCalendarService {
         return (date || this.currentDate.getValue()).day;
     }
 
+    getOffsetShort(date?:luxon.DateTime) {
+        return (date || this.currentDate.getValue()).offsetNameShort
+    }
 }
