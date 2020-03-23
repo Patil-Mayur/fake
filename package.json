@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@types/luxon": "^1.21.0",
+    "luxon": "^1.22.0",
     "moment": "^2.24.0",
     "ng-zorro-antd": "^8.5.2",
     "rxjs": "~6.4.0",
