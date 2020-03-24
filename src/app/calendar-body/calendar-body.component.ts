@@ -1,8 +1,8 @@
-import { Component, Output, EventEmitter } from "@angular/core";
-import { CalendarService } from '../services/calendar.service';
+import { Component } from "@angular/core";
 import { MonthCalendarComponent } from '../month-calendar/month-calendar.component';
 import { WeekCalendarComponent } from '../week-calendar/week-calendar.component';
 import { DayCalendarComponent } from '../day-calendar/day-calendar.component';
+import { LXCalendarService } from '../services/lx-calendar.service';
 
 @Component({
     selector: "calendar-body",
@@ -13,7 +13,7 @@ export class CalendarBodyComponent {
 
     calenderViewComponent;
 
-    constructor(private calendarService: CalendarService) {}
+    constructor(private calendarService: LXCalendarService) {}
 
     ngOnInit() {
         this.calendarService.getViewRenderType()

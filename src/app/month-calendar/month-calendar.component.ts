@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from "@angular/core";
-import { CalendarService } from '../services/calendar.service';
-import * as moment from 'moment';
+import {DateTime} from 'luxon';
+import { LXCalendarService } from '../services/lx-calendar.service';
 @Component({
     selector: "month-calendar",
     templateUrl: "./month-calendar.component.html",
@@ -8,19 +8,21 @@ import * as moment from 'moment';
 })
 export class MonthCalendarComponent implements OnInit {
 
-    constructor(private calendarService: CalendarService) {}
+    constructor(private calendarService: LXCalendarService) {}
 
     daysOfWeek:string[] = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-    monthDates:moment.Moment[] = [];
+    monthDates:DateTime[] = [];
     ngOnInit() {
         this.calendarService.getCurrentDate()
         .subscribe(date => {
-            let sDate = date.clone().startOf('month').startOf('week');
-            const eDate = date.clone().endOf('month').endOf('week');
-            let arr = [];
-            while(eDate.isSameOrAfter(sDate)) {
-                arr.push(sDate.clone());
-                sDate.add(1, 'day');
+            let sDate = date.startOf('month').startOf('week');
+            const eDate = date.endOf('month').endOf('week');
+            let noOfDays = Math.round(eDate.diff(sDate, 'days').toObject().days);
+            let arr = [sDate];
+            let addDays = {days:1};
+            while(--noOfDays) {
+                sDate = sDate.plus(addDays);
+                arr.push(sDate);
             }
             this.monthDates = arr;
         })

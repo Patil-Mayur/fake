@@ -1,6 +1,6 @@
-import { Component, Output, EventEmitter, Input } from "@angular/core";
-import { Moment } from 'moment';
-import { CalendarService } from '../services/calendar.service';
+import { Component, Input } from "@angular/core";
+import { DateTime } from 'luxon';
+import { LXCalendarService } from '../services/lx-calendar.service';
 
 @Component({
     selector: "month-item-calendar",
@@ -9,9 +9,9 @@ import { CalendarService } from '../services/calendar.service';
 })
 export class MonthItemCalendarComponent {
 
-    @Input() monthDate:Moment;
+    @Input() monthDate:DateTime;
     nzType:string = 'default';
-    constructor(private calendarService: CalendarService) {}
+    constructor(private calendarService: LXCalendarService) {}
 
     getDate() {
         const date = this.calendarService.getCurrentDateValue(this.monthDate);
@@ -22,8 +22,8 @@ export class MonthItemCalendarComponent {
     }
 
     isTodaysDate() {
-        const todaysDate = this.calendarService.getTodaysDate().format('YYYY-MM-DD');
-        const monthDate = this.monthDate.format('YYYY-MM-DD');
+        const todaysDate = this.calendarService.getTodaysDate().toISODate();
+        const monthDate = this.monthDate.toISODate();
         return monthDate === todaysDate;
     }
 

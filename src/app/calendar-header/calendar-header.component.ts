@@ -1,5 +1,5 @@
-import { Component, Output, EventEmitter, OnInit, AfterViewInit } from "@angular/core";
-import { CalendarService } from '../services/calendar.service';
+import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { LXCalendarService } from '../services/lx-calendar.service';
 
 @Component({
     selector: "calendar-header",
@@ -11,7 +11,7 @@ export class CalendarHeaderComponent implements OnInit, AfterViewInit {
     calendarRendererType:string;
     label:string = ''
 
-    constructor(private calendarService: CalendarService) {
+    constructor(private calendarService: LXCalendarService) {
     }
 
     ngOnInit() {

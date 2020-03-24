@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { MonthCalendarComponent } from './month-calendar/month-calendar.component';
-import { WeekCalendarComponent } from './week-calendar/week-calendar.component';
-import { DayCalendarComponent } from './day-calendar/day-calendar.component';
-import * as moment from 'moment';
-import { CalendarService } from './services/calendar.service';
+import { LXCalendarService } from './services/lx-calendar.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +8,7 @@ import { CalendarService } from './services/calendar.service';
 })
 export class AppComponent {
 
-  constructor(private calendarService: CalendarService) {
+  constructor(private calendarService: LXCalendarService) {
     this.calendarService.setTodaysDate();
     this.calendarService.setCurrentDate(this.calendarService.getTodaysDate());
   }

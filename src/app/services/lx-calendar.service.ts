@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import * as luxon from 'luxon';
+import {DateTime} from 'luxon';
 
 @Injectable({
     providedIn: 'root'
@@ -8,15 +8,15 @@ import * as luxon from 'luxon';
 export class LXCalendarService {
 
     private todaysDate; //holds todays date
-    private currentDate = new BehaviorSubject<luxon.DateTime>(null)//= new BehaviorSubject<moment.Moment>(null);
+    private currentDate = new BehaviorSubject<DateTime>(null);
     private calendarViewType = new BehaviorSubject<string>('month');
 
     public setTodaysDate(timeZone?:string) {
         if(!this.todaysDate) {
             if(timeZone) {
-                this.todaysDate = luxon.DateTime.local().setZone(timeZone);
+                this.todaysDate = DateTime.local().setZone(timeZone);
             } else {
-                this.todaysDate = luxon.DateTime.local();
+                this.todaysDate = DateTime.local();
             }
         }
     }
@@ -30,14 +30,14 @@ export class LXCalendarService {
     }
 
     getTodaysDate() {
-        return this.todaysDate.clone();
+        return this.todaysDate;
     }
 
-    setCurrentDate(date?:luxon.DateTime) {
+    setCurrentDate(date?:DateTime) {
         this.currentDate.next(date || this.getTodaysDate());
     }
 
-    getCurrentDate():BehaviorSubject<luxon.DateTime> {
+    getCurrentDate():BehaviorSubject<DateTime> {
         return this.currentDate;
     }
 
@@ -49,35 +49,35 @@ export class LXCalendarService {
         this.addMonth(months * -1);
     }
 
-    getYearShort(date?:luxon.DateTime) {
-        return (date || this.currentDate.getValue()).;
+    getYearShort(date?:DateTime) {
+        return (date || this.currentDate.getValue()).year.toString().substr(2);
     }
 
-    getYear(date?:luxon.DateTime) {
+    getYear(date?:DateTime) {
         return (date || this.currentDate.getValue()).year;
     }
 
-    getMonthShort(date?:luxon.DateTime) {
+    getMonthShort(date?:DateTime) {
         return (date || this.currentDate.getValue()).monthShort;
     }
 
-    getMonth(date?:luxon.DateTime) {
+    getMonth(date?:DateTime) {
         return (date || this.currentDate.getValue()).monthLong;
     }
 
-    getCurrentDay(date?:luxon.DateTime) {
+    getCurrentDay(date?:DateTime) {
         return (date || this.currentDate.getValue()).weekdayLong;
     }
 
-    getCurrentDayShort(date?:luxon.DateTime) {
+    getCurrentDayShort(date?:DateTime) {
         return (date || this.currentDate.getValue()).weekdayShort;
     }
 
-    getCurrentDateValue(date?:luxon.DateTime) {
+    getCurrentDateValue(date?:DateTime) {
         return (date || this.currentDate.getValue()).day;
     }
 
-    getOffsetShort(date?:luxon.DateTime) {
+    getOffsetShort(date?:DateTime) {
         return (date || this.currentDate.getValue()).offsetNameShort
     }
 }
