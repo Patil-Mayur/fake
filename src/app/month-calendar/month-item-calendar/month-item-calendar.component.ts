@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { DateTime } from 'luxon';
-import { LXCalendarService } from '../services/lx-calendar.service';
+import { LXCalendarService } from '../../services/lx-calendar.service';
 
 @Component({
     selector: "month-item-calendar",
