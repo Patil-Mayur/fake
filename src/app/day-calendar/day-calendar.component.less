@@ -1,0 +1,102 @@
+.day-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .day-header {
+        flex-shrink: 0;
+        display: flex;
+        align-items: flex-end;
+        border-bottom:1px solid #dadce0;
+
+        &__offset {
+            border-right:1px solid #dadce0;
+            font-size:10px;
+            color:#70757a;
+            width: 70px;
+            height:24px;
+            padding-left: 10px;
+            padding-top: 10px;
+            line-height: 8px;
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 10px;
+            padding-bottom: 3px;
+        }
+        &__month-short {
+            color:#1a73e8;
+            letter-spacing: .8px;
+            text-indent: .8px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        &__day-value {
+            width: 46px;
+            height: 46px;
+            background-color: #1a73e8;
+            color: white;
+            letter-spacing: -2.5px;
+            text-indent: -2.5px;
+            font-size: 25px;
+        }
+    }
+
+    .day-container {
+        display: flex;
+        flex: 1 1 60%;
+        overflow:hidden;
+        position: relative;
+
+        .presentation {
+            display: flex;
+            flex: 1 1 auto;
+            overflow-y:scroll;
+            &__timeline {
+                width: 70px;
+                overflow: hidden;
+                height: fit-content;
+                border-right: #dadce0 1px solid;
+                .timing_detail {
+                    width: 70px;
+                    position: relative;
+                    height:48px;
+                    font-size: 10px;
+                    color:#70757a;
+                    &:first-child {
+                        visibility: hidden;
+                    }
+                    display: flex;
+                    &__time {
+                        width: 60px;
+                        position: relative;
+                        top: -6px;
+                        display: flex;
+                        justify-content: flex-end;
+                        padding-right: 5px;
+                    }
+                    .border-10px {
+                        height: 48px;
+                        width: 10px;
+                        border-bottom: #dadce0 1px solid;
+                    }
+                }
+            }
+            &__day_events {
+                flex: 1 1 auto;
+                .events-div {
+                    position: relative;
+                    top: 0px;
+                    height: 1152px;
+                    .event-border {
+                        height: 48px;
+                        border-bottom: #dadce0 1px solid;
+                    }
+                }
+                
+            }
+        }
+    }
+}

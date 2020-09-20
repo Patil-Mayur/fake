@@ -1,1 +1,27 @@
-Day
+<div class="day-body">
+    
+    <section class="day-header">
+        <div class="day-header__offset">
+            {{offsetShort}}
+        </div>
+        <div class="day-header__info">
+            <span class="day-header__month-short">{{monthShort}}</span>
+            <button class="day-header__day-value" nz-button nzType="default" nzSize="large" nzShape="circle">{{day}}</button>
+        </div>
+    </section>
+    <section class="day-container">
+        <div class="presentation">
+            <div class="presentation__timeline">
+                <div class="timing_detail" *ngFor="let detail of timeDetails">
+                    <div class="timing_detail__time">{{detail}}</div>
+                    <div class="border-10px"></div>
+                </div>
+            </div>
+            <div class="presentation__day_events">
+                <div class="events-div">
+                    <div class="event-border" *ngFor="let detail of timeDetails"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
