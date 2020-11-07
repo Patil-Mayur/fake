@@ -5,8 +5,8 @@
             {{offsetShort}}
         </div>
         <div class="day-header__info">
-            <span class="day-header__month-short">{{monthShort}}</span>
-            <button class="day-header__day-value" nz-button nzType="default" nzSize="large" nzShape="circle">{{day}}</button>
+            <span class="day-header__month-short">{{(date | async)?.monthShort}}</span>
+            <button [ngClass]="{'todays-date':isTodaysDate()}" class="day-header__day-value" nz-button nzType="default" nzSize="large" nzShape="circle">{{(date | async).day}}</button>
         </div>
     </section>
     <section class="day-container">

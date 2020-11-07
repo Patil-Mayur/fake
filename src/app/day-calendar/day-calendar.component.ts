@@ -9,24 +9,9 @@ import { LXCalendarService } from '../services/lx-calendar.service';
 })
 export class DayCalendarComponent implements OnInit {
 
-    day = this.calendarService.getCurrentDateValue();
-    monthShort = this.calendarService.getMonthShort();
-    weekDayShort = this.calendarService.getCurrentDayShort();
+    date = this.calendarService.getCurrentDate();
     offsetShort = this.calendarService.getOffsetShort();
-
     timeDetails = this.calendarService.getTimeInfo();
-
-    scheduleList = [
-        {eventName: "Event 1", eventId: 1, startTime: '', endTime: ''},
-        {eventName: "Event 2", eventId: 2, startTime: '', endTime: ''},
-        {eventName: "Event 3", eventId: 3, startTime: '', endTime: ''},
-        {eventName: "Event 4", eventId: 4, startTime: '', endTime: ''},
-        {eventName: "Event 5", eventId: 5, startTime: '', endTime: ''},
-        {eventName: "Event 6", eventId: 6, startTime: '', endTime: ''},
-        {eventName: "Event 7", eventId: 7, startTime: '', endTime: ''},
-        {eventName: "Event 8", eventId: 8, startTime: '', endTime: ''},
-        {eventName: "Event 9", eventId: 9, startTime: '', endTime: ''},
-    ];
 
     constructor(private calendarService: LXCalendarService) {
 
@@ -34,6 +19,12 @@ export class DayCalendarComponent implements OnInit {
 
     ngOnInit() {
         
+    }
+
+    isTodaysDate() {
+        const todaysDate = this.calendarService.getTodaysDate().toISODate();
+        const currentDate = this.calendarService.getCurrentDate().getValue().toISODate();
+        return currentDate === todaysDate;
     }
 
     calc(minutes) {
