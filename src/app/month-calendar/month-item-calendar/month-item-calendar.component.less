@@ -3,8 +3,15 @@
 .month-item-container {
     display: flex;
     width:@per-100;
+    height: @per-100;
     padding-top:2px;
-    justify-content: center;
+    padding-bottom:2px;
+    flex-direction: column;
+    .date-display {
+        padding-bottom: 2px;
+        display: flex;
+        justify-content: center;
+    }
     .display-date-common {
         font-size: @calendar-body-font-default;
     }
@@ -18,4 +25,21 @@
     .item-non-current-date {
         color: @not-current-date-color;
     }
+    .current-date-schedules {
+        flex:1;
+        overflow-y: auto;
+        .schedule-item {
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            border: 1px solid #1a73e8;
+            color: #1a73e8;
+            height:2rem;
+            font-size:1.2rem;
+            padding-left:5px;
+            margin: 2px 5px 2px 5px;
+            border-radius: 5px;
+        }
+    }
+
 }

@@ -1,4 +1,11 @@
 
 <div class="month-item-container">
-    <button class="round-tranparent-icon display-date-common" [ngClass]="{'current-item-date': isCurrentMonth(), 'item-todays-date': isTodaysDate(), 'item-non-current-date': !isCurrentMonth()}" nz-button nzType="default" nzSize="small" nzShape="circle">{{getDate()}}</button>
+    <div class="date-display">
+        <button class="round-tranparent-icon display-date-common" [ngClass]="{'current-item-date': isCurrentMonth(), 'item-todays-date': isTodaysDate(), 'item-non-current-date': !isCurrentMonth()}" nz-button nzType="default" nzSize="small" nzShape="circle">{{getDate()}}</button>
+    </div>
+    <div class="current-date-schedules">
+        <div class="schedule-item" *ngFor="let schedule of schedules">
+            {{schedule.startTime.toFormat('T')}} {{schedule.eventName}}
+        </div>
+    </div>
 </div>

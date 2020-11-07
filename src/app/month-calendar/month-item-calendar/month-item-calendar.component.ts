@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { DateTime } from 'luxon';
 import { LXCalendarService } from '../../services/lx-calendar.service';
 
@@ -7,11 +7,20 @@ import { LXCalendarService } from '../../services/lx-calendar.service';
     templateUrl: "./month-item-calendar.component.html",
     styleUrls: ["./month-item-calendar.component.less"]
 })
-export class MonthItemCalendarComponent {
+export class MonthItemCalendarComponent implements OnInit {
 
     @Input() monthDate:DateTime;
+    monthISODate;
     nzType:string = 'default';
+    schedules = [];
     constructor(private calendarService: LXCalendarService) {}
+
+    ngOnInit() {
+        this.monthISODate = this.monthDate.toISODate();
+        /* this.schedules = this.calendarService.getScheduledDatesForMonth().filter((schedule) => {
+            return schedule.startTime.toISODate() === this.monthISODate;
+        }); */
+    }
 
     getDate() {
         const date = this.calendarService.getCurrentDateValue(this.monthDate);
@@ -23,8 +32,7 @@ export class MonthItemCalendarComponent {
 
     isTodaysDate() {
         const todaysDate = this.calendarService.getTodaysDate().toISODate();
-        const monthDate = this.monthDate.toISODate();
-        return monthDate === todaysDate;
+        return this.monthISODate === todaysDate;
     }
 
     isCurrentMonth() {
