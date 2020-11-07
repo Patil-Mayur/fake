@@ -5,7 +5,7 @@
         <button nz-button nzType="default" (click)="moveRight()" class="round-tranparent-icon" nzShape="circle"><i nz-icon nzType="right"></i></button>
     </div>
     <div class="date-label">
-        <label>{{label}}</label>
+        {{label}}
     </div>
     <nz-select [ngModel]="calendarRendererType" (ngModelChange)="onRenderTypeChange($event)" >
         <nz-option nzValue="month" nzLabel="Month"></nz-option>

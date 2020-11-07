@@ -34,7 +34,10 @@ export class CalendarHeaderComponent implements OnInit, AfterViewInit {
     updateLabel() {
         switch(this.calendarRendererType) {
             case 'month':
-                this.label = `${this.calendarService.getMonth()} ${this.calendarService.getYear()}`;
+                this.label = `${this.calendarService.getCurrentDateMonthHeaderLabel()}`;
+                break;
+            case 'day':
+                this.label = `${this.calendarService.getCurrentDateDayHeaderLabel()}`;
                 break;
             default:
                 this.label = `${this.calendarService.getMonth()} ${this.calendarService.getYear()}`;
@@ -46,11 +49,29 @@ export class CalendarHeaderComponent implements OnInit, AfterViewInit {
     }
 
     moveLeft() {
-        this.calendarService.subtractMonth();
+        switch(this.calendarRendererType) {
+            case 'month': 
+                this.calendarService.subtractMonth();
+                break;
+            case 'day':
+                this.calendarService.subtractDays();
+                break;
+            default:
+                this.calendarService.subtractMonth();
+        }
     }
 
     moveRight() {
-        this.calendarService.addMonth();
+        switch(this.calendarRendererType) {
+            case 'month': 
+                this.calendarService.addMonth();
+                break;
+            case 'day':
+                this.calendarService.addDays();
+                break;
+            default:
+                this.calendarService.addMonth();
+        }
     }
 
     resetDate() {
