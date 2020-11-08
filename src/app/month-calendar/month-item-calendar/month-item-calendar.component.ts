@@ -17,9 +17,9 @@ export class MonthItemCalendarComponent implements OnInit {
 
     ngOnInit() {
         this.monthISODate = this.monthDate.toISODate();
-        /* this.schedules = this.calendarService.getScheduledDatesForMonth().filter((schedule) => {
+       this.schedules = this.calendarService.getScheduledDatesForMonth().filter((schedule) => {
             return schedule.startTime.toISODate() === this.monthISODate;
-        }); */
+        }); 
     }
 
     getDate() {
@@ -38,5 +38,4 @@ export class MonthItemCalendarComponent implements OnInit {
     isCurrentMonth() {
         return this.calendarService.getMonthShort() === this.calendarService.getMonthShort(this.monthDate);
     }
-
 }
